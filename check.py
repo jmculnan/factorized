@@ -2,10 +2,13 @@ import os
 import numpy as np
 import argparse
 
+#USE ARGUMENT PARSER
 parser = argparse.ArgumentParser()
+#ADD DEFAULT DATASET AS MOSI
 parser.add_argument('--type', default='mosi', type=str)
 args = parser.parse_args()
 
+#CHECK ARGS FOR DATASET
 if args.type == 'mosi_mfn':
 	alldir = '/media/bighdd7/paul/cluster/temp/'
 if args.type == 'mosi':
@@ -19,7 +22,11 @@ if args.type == 'you':
 if args.type == 'missing':
 	alldir = '/media/bighdd7/paul/cluster/res_mfm_missing4/'
 
+#WHAT IS THIS? I ASSUME IT'S FOR 'VIDEO'?
 ttt = 'v'
+
+#ALLDIR NOT DEFINED IN THIS SCRIPT
+#THIS DOES A CHECK TO MAKE SURE ALL THE MODALITIES ARE PRESENT
 if 'missing' in alldir:
 	arr = os.listdir(alldir)
 	arr.sort()
@@ -117,6 +124,7 @@ d0 = []
 
 arr = os.listdir(alldir)
 arr.sort()
+# THIS GIVES INFORMATION ON THE DATA FILES
 for file2 in arr:
 	if file2.endswith(".txt"):
 		name = alldir + file2
@@ -223,6 +231,7 @@ for file2 in arr:
 					print
 
 
+#CHECKS FOR POM DATASET
 if ('pom' in alldir and args.type != 'pom3' and args.type != 'pom4'):
 	i = 0
 	af = []
